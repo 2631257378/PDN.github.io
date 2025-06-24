@@ -3,36 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人网站</title>
+    <title>个人项目展示 - 潘德念</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
             background-color: #f5f5f5;
+            color: #333;
         }
         h1 {
             color: #2c3e50;
             border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
         }
         .container {
             background: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .contact-info {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .project {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        .project-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .project-date {
+            color: #777;
+            font-size: 0.9em;
+        }
+        .project-description {
+            margin: 10px 0;
+        }
+        .project-tech {
+            font-style: italic;
+            color: #555;
+        }
+        .project-image {
+            margin: 15px 0;
+            text-align: center;
+        }
+        .project-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>欢迎来到我的网站！</h1>
-        <p>这是通过 GitHub Pages 发布的第一个网页。</p>
-        <ul>
-            <li><a href="https://github.com">GitHub官网</a></li>
-            <li><a href="mailto:你的邮箱@example.com">联系我</a></li>
-        </ul>
+        <div class="header">
+            <h1>潘德念</h1>
+            <p>嵌入式软件工程师</p>
+        </div>
+        
+        <div class="contact-info">
+            <p>📧 <a href="mailto:2631257378@qq.com">2631257378@qq.com</a></p>
+        </div>
+        
+        <h2>项目经历</h2>
+        
+        <!-- 项目1 -->
+        <div class="project">
+            <div class="project-title">四轴运动控制板</div>
+            <div class="project-date">2023年10月 - 至今</div>
+            
+            <div class="project-image">
+                <img src="images/四轴运动控制板.jpg" alt="四轴运动控制板实物图">
+            </div>
+            
+            <div class="project-description">
+                <p>该项目主要是开发四轴电机运动控制板卡，应用于物料筛选机、多轴机械臂等设备。板卡上有FPGA与STM32，我主要是负责STM32端的嵌入式软件开发。</p>
+                <ul>
+                    <li>关键技术点1：FreeRTOS+Lwip通过移植操作系统到F407单片机上进行任务调度与以太网通讯</li>
+                    <li>关键技术点2：使用FSMC总线，通过共享RAM的方式将以太网下发的指令经过STM32处理后存放到指定地址,并且读取FPGA存放的反馈数据进行以太网上传</li>
+                    <li>关键技术点3：使用基于Spi总线的Flash对以太网下发的多条指令数据进行存放，然后进行脱机指令的运行</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 项目2 -->
+        <div class="project">
+            <div class="project-title">基于CAN总线的一体化闭环步进电机驱动器（毕业设计）</div>
+            <div class="project-date">2025年4月 - 至今</div>
+            
+            <div class="project-image">
+                <img src="images/闭环步进电机驱动器.jpg" alt="闭环步进电机驱动器设计图">
+            </div>
+            
+            <div class="project-description">
+                <p>开发一款通过CAN总线发送运动指令进行控制的闭环步进电机驱动器，该项目的硬件与软件都是独立完成。</p>
+                <ul>
+                    <li>关键技术点1：不丢步算法：通过磁编码器与对其角度变化的记录与理论角度变化的对比，进行丢步补偿</li>
+                    <li>关键技术点2：堵转监测：监测在发送脉冲时角度是否为发送变化，判断是否丢步，控制电流的输出</li>
+                    <li>关键技术点3：梯形加减速算法：实时计算加速与减速的步数，通过改变脉冲频率，实现梯形加减速</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 项目3 -->
+        <div class="project">
+            <div class="project-title">运动目标控制与自动追踪系统</div>
+            <div class="project-date">2023年8月1日 - 2023年8月4日</div>
+            
+            <div class="project-image">
+                <img src="images/自动追踪系统.jpg" alt="自动追踪系统工作示意图">
+            </div>
+            
+            <div class="project-description">
+                <p>开发运动目标控制与自动追踪系统两套独立系统，包括红色光斑运动系统和绿色追踪系统。</p>
+                <ul>
+                    <li>关键技术点1：STM32F1单片机控制舵机云台将激光打到指定靶纸坐标的控制程序开发</li>
+                    <li>关键技术点2：摄像头返回坐标点解算成角度通过PID控制PWM占空比控制舵机云台</li>
+                    <li>关键技术点3：OPENMV摄像头识别边框坐标、红色光斑的算法开发</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html>
